@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Rivera - Marketing Analytics Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css">
+    <style>
+        :root {
+            --primary-color: #B45309;
+            --bg-warm: #faf9f6;
+            --text-dark: #1F2937;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .mission-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin: 2rem auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: #6B7280;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .tab:hover {
+            color: var(--primary-color);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background: var(--bg-warm);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .code-section {
+            margin: 2rem 0;
+        }
+
+        .code-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: none;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        .code-block {
+            display: none;
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        .code-block.visible {
+            display: block;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            background: var(--bg-warm);
+            padding: 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-section {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .contact-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        .end-quote {
+            text-align: center;
+            font-style: italic;
+            color: #6B7280;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab {
+                padding: 0.75rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Alex Rivera</h1>
+            <p>Marketing Analytics Portfolio</p>
+        </header>
+
+        <div class="mission-card">
+            <h2>Professional Goal</h2>
+            <p>Dedicated to bridging the gap between marketing intuition and data-driven decisions through Python analytics, 
+            aiming to create measurable impact in digital marketing strategies.</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="project">Project</button>
+            <button class="tab" data-tab="skills">Skills</button>
+            <button class="tab" data-tab="impact">Impact</button>
+        </div>
+
+        <div class="content-section" id="project">
+            <h2>Social Media Performance Analysis</h2>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Engagement Increase</h3>
+                    <div class="metric-value">45%</div>
+                </div>
+                <div class="metric-card">
+                    <h3>Content Performance</h3>
+                    <div class="metric-value">3x</div>
+                </div>
+                <div class="metric-card">
+                    <h3>Reports Automated</h3>
+                    <div class="metric-value">100%</div>
+                </div>
+            </div>
+
+            <div class="code-section">
+                <button class="code-toggle">
+                    View Python Implementation ▼
+                </button>
+                <div class="code-block">
+                    <pre><code class="language-python">
+def analyze_social_media_performance(data_file):
+    # Load social media data from CSV
+    df = pd.read_csv(data_file)
+    
+    # Calculate engagement rate
+    df['engagement_rate'] = ((df['likes'] + df['comments']) / 
+                            df['followers']) * 100
+    
+    # Analyze best posting times
+    performance_by_hour = df.groupby('posting_hour')['engagement_rate'].mean()
+    
+    # Find best performing content types
+    content_performance = df.groupby('content_type')['engagement_rate'].mean()
+    
+    return {
+        'best_posting_time': performance_by_hour.idxmax(),
+        'best_content_type': content_performance.idxmax(),
+        'avg_engagement': df['engagement_rate'].mean()
+    }
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section" id="skills" style="display: none;">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">Python (pandas, matplotlib)</div>
+                <div class="skill-item">Data Analysis</div>
+                <div class="skill-item">SQL (basic)</div>
+                <div class="skill-item">Excel</div>
+                <div class="skill-item">Google Analytics</div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Certifications</h2>
+            <div class="skills-grid">
+                <div class="skill-item">Google Analytics Certification</div>
+                <div class="skill-item">Python for Data Science (Coursera)</div>
+                <div class="skill-item">Marketing Analytics Fundamentals</div>
+            </div>
+        </div>
+
+        <div class="content-section" id="impact" style="display: none;">
+            <h2>Project Impact</h2>
+            <div class="skills-grid">
+                <div class="skill-item">Optimized posting schedule resulting in 45% higher engagement</div>
+                <div class="skill-item">Automated weekly reporting saving 5 hours per week</div>
+                <div class="skill-item">Implemented data-driven content strategy</div>
+                <div class="skill-item">Established reusable analysis framework</div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>Let's Connect</h2>
+            <div class="contact-links">
+                <a href="mailto:alex.rivera@email.com" class="contact-link">
+                    📧 Email
+                </a>
+                <a href="https://linkedin.com/in/alexrivera" class="contact-link">
+                    💼 LinkedIn
+                </a>
+            </div>
+        </div>
+
+        <div class="end-quote">
+            "Transforming marketing data into actionable insights, one analysis at a time."
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all content sections
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Show selected content section
+                const targetId = tab.dataset.tab;
+                document.getElementById(targetId).style.display = 'block';
+            });
+        });
+
+        // Code toggle functionality
+        document.querySelector('.code-toggle').addEventListener('click', function() {
+            const codeBlock = document.querySelector('.code-block');
+            const isVisible = codeBlock.classList.toggle('visible');
+            this.textContent = `${isVisible ? 'Hide' : 'View'} Python Implementation ${isVisible ? '▲' : '▼'}`;
+        });
+
+        // Initialize Prism.js for code highlighting
+        Prism.highlightAll();
+    </script>
+</body>
+</html>
